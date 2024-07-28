@@ -28,7 +28,9 @@ int b_specifier(va_list args);
 
 int print_number(int n);
 int print_unsigned_number(unsigned int n);
-int convert_and_print(unsigned int num, int base, const char *digits);
+int convert_and_print(unsigned int num, unsigned int base, const char *digits);
+char *convert_to_binary(unsigned int num);
+int print_binary_string(char *binary_str);
+int print_hex_char(unsigned char c);
 
 #endif /* MAIN_H */
-
