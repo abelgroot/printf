@@ -11,6 +11,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 void _flush_buffer(void);
 int print_format(const char *format, va_list args);
+int process_specifier(char specifier, va_list args);
 
 /* Character and string specifiers */
 int c_specifier(va_list args);
@@ -46,4 +47,3 @@ int space_non_custom_specifier(va_list args);
 int hash_flag_specifier(va_list args, char specifier);
 
 #endif /* MAIN_H */
-

@@ -64,17 +64,17 @@ int hash_flag_specifier(va_list args, char specifier)
 	if (specifier == 'o')
 	{
 		printed_chars += _putchar('0');
-		printed_chars += o_specifier(args);
+		printed_chars += uoxX_specifier(args, 'o');
 	}
 	else if (specifier == 'x')
 	{
 		printed_chars += _puts("0x");
-		printed_chars += x_specifier(args);
+		printed_chars += uoxX_specifier(args, 'x');
 	}
 	else if (specifier == 'X')
 	{
 		printed_chars += _puts("0X");
-		printed_chars += X_specifier(args);
+		printed_chars += uoxX_specifier(args, 'X');
 	}
 	return (printed_chars);
 }
