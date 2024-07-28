@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
 * b_specifier - Converts an unsigned int to binary and prints it.
@@ -35,7 +34,7 @@ int b_specifier(va_list args)
 char *convert_to_binary(unsigned int num)
 {
 	char *binary_str;
-	int len = 0;
+	int i, len = 0;
 	unsigned int temp = num;
 
 	while (temp > 0)
@@ -49,7 +48,7 @@ char *convert_to_binary(unsigned int num)
 		return (NULL);
 
 	binary_str[len] = '\0';
-	for (int i = len - 1; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		binary_str[i] = (num % 2) + '0';
 		num /= 2;
@@ -67,9 +66,9 @@ char *convert_to_binary(unsigned int num)
 int print_binary_string(char *binary_str)
 {
 	int printed_chars = 0;
-	int leading_zero = 1;
+	int i, leading_zero = 1;
 
-	for (int i = 0; binary_str[i] != '\0'; i++)
+	for (i = 0; binary_str[i] != '\0'; i++)
 	{
 		if (binary_str[i] != '0')
 			leading_zero = 0;

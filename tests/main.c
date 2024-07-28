@@ -40,7 +40,7 @@ int main(void)
     
     printf("printf INT_MIN %d\n", INT_MIN);
     printf("printf INT_MAX %d\n", INT_MAX);
-    
+     
     printf("\n");
     
     _printf("_printf INT_MIN %d\n", INT_MIN);
@@ -64,6 +64,8 @@ int main(void)
     _printf("Negative:[%d]\n", "string");
     printf("Negative:[%d]\n", "string");
 
+	printf("\n");
+    _printf("Negative:[%b]\n",10000);
 /**
 	_printf("_Print returned length: %i\n", len);
 	printf("Print returned length: %i\n", len2);
