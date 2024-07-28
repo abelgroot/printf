@@ -13,6 +13,5 @@ int main(void)
 	printf(" S -_Print Hex decimal  with S %S\n", "Betty\nSchool");  
 	printf("\n");
 
-
 	return (0);
 }

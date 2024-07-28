@@ -1,4 +1,4 @@
-nclude "main.h"
+#include "main.h"
 
 static char buffer[BUFFER_SIZE];
 static int buffer_index;
