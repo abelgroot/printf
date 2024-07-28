@@ -6,7 +6,7 @@
 * Return: number of characters printed.
 **/
 
-int print_number(int n)
+int print_number(long int n)
 {
 	int printed_chars = 0;
 
@@ -37,7 +37,7 @@ int print_number(int n)
 **/
 int d_specifier(va_list args)
 {
-	int n = va_arg(args, int);
+	long int n = va_arg(args, long int);
 
 	return (print_number(n));
 }
