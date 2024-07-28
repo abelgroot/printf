@@ -1,22 +1,34 @@
 #include "main.h"
 
+/**
+ * r_specifier - Prints a string in reverse
+ * @args: A va_list containing the string to be printed
+ *
+ * Return: The number of characters printed
+ */
 int r_specifier(va_list args)
 {
-    char *revstr  = va_arg(args, char *);
-    char rev = revstr[0];
-	int counter = 0;
-	int i, printed_chars = 0;
+	char *end;
+	char *str = va_arg(args, char *);
+	int printed_chars = 0;
 
-
-	while (revstr[counter] != '\0')
-		counter++;
-	for (i = 0; i < counter; i++)
+	if (str == NULL)
 	{
-		counter--;
-		rev = revstr[i];
-		revstr[i] = revstr[counter];
-		revstr[counter] = rev;
+		str = "(null)";
+	}
+
+	end = str;
+	while (*end)
+	{
+		end++;
+	}
+
+	while (end != str)
+	{
+		end--;
+		_putchar(*end);
 		printed_chars++;
 	}
+
 	return (printed_chars);
 }

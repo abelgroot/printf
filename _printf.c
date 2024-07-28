@@ -133,7 +133,7 @@ int process_specifier(char specifier, va_list args)
 			else
 				printed_chars += o_specifier(args);
 			break;
-		case 'x':
+		case 'x': /* %+d */
 			if (hash_flag)
 				printed_chars += hash_flag_specifier(args, 'x');
 			else
