@@ -19,11 +19,12 @@ int i_specifier(va_list args);
 int b_specifier(va_list args);
 char *convert_to_binary(unsigned int num);
 int print_binary_string(char *binary_str);
-
+int S_specifier(va_list args);
 int u_specifier(va_list args);
 int o_specifier(va_list args);
 int x_specifier(va_list args);
 int X_specifier(va_list args);
+int print_hex_char(unsigned int s);
 
 int print_number(int);
 int _putchar(char c);
