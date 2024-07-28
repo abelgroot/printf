@@ -44,7 +44,7 @@ int u_specifier(va_list args)
 char *convert_to_base(unsigned int num, int base, const char *digits)
 {
 	char *str;
-	int len = 0;
+	int i, len = 0;
 	unsigned int temp = num;
 
 	while (temp > 0)
@@ -59,7 +59,7 @@ char *convert_to_base(unsigned int num, int base, const char *digits)
 
 	str[len] = '\0';
 
-	for (int i = len - 1; i >= 0; i--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		str[i] = digits[num % base];
 		num /= base;
@@ -77,9 +77,9 @@ char *convert_to_base(unsigned int num, int base, const char *digits)
 int print_base_string(char *str)
 {
 	int printed_chars = 0;
-	int leading_zero = 1;
+	int i, leading_zero = 1;
 
-	for (int i = 0; str[i] != '\0'; i++)
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] != '0')
 			leading_zero = 0;
