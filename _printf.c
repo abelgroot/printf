@@ -22,6 +22,12 @@ int print_format(const char format, va_list args)
 		case '%':
 			printed_chars += modulo_specifier(args);
 			break;
+		case 'd':
+			printed_chars += d_specifier(args);
+			break;
+		case 'i':
+			printed_chars += i_specifier(args);
+			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(format);
