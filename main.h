@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #define BUFFER_SIZE 1024
 
@@ -37,6 +38,7 @@ int convert_and_print(unsigned int num, unsigned int base, const char *digits);
 /* Custom specifiers */
 int S_specifier(va_list args);
 int print_hex_char(unsigned char c);
+int r_specifier(va_list args);
 
 /* Pointer specifier */
 int p_specifier(va_list args);

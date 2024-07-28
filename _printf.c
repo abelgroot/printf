@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-* print_format - Prints formatted output.
-* @format: The format string.
-* @args: The argument list.
-*
-* Return: The number of characters printed.
-*/
+ * print_format - Prints formatted output
+ * @format: The format string
+ * @args: The argument list
+ *
+ * Return: The number of characters printed
+ */
 int print_format(const char *format, va_list args)
 {
 	int i, printed_chars = 0;
@@ -18,10 +18,38 @@ int print_format(const char *format, va_list args)
 		{
 			i++;
 			if (format[i] == '\0')
-			{
 				return (-1);
-			}
 			specifier = format[i];
+			if (specifier == '+')
+			{
+				if (format[i + 1] == 'd' || format[i + 1] == 'i')
+				{
+					specifier = format[i];
+					printed_chars += plus_non_custom_specifier(args);
+					i++;
+					continue;
+				}
+			}
+			if (specifier == ' ')
+			{
+				if (format[i + 1] == 'd' || format[i + 1] == 'i')
+				{
+					specifier = format[i];
+					printed_chars += space_non_custom_specifier(args);
+					i++;
+					continue;
+				}
+			}
+			if (specifier == '#')
+			{
+				if (format[i + 1] == 'x' || format[i + 1] == 'X' || format[i + 1] == 'o')
+				{
+					specifier = format[i + 1];
+					printed_chars += hash_flag_specifier(args, specifier);
+					i++;
+					continue;
+				}
+			}
 			printed_chars += process_specifier(specifier, args);
 		}
 		else
@@ -33,11 +61,11 @@ int print_format(const char *format, va_list args)
 }
 
 /**
-* _printf - Produces output according to a format.
-* @format: The format string.
-*
-* Return: The number of characters printed.
-*/
+ * _printf - Produces output according to a format
+ * @format: The format string
+ *
+ * Return: The number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -52,13 +80,12 @@ int _printf(const char *format, ...)
 	return (printed_chars);
 }
 
-
 /**
- * process_specifier - Processes a format specifier.
- * @specifier: The format specifier.
- * @args: The argument list.
+ * process_specifier - Processes a format specifier
+ * @specifier: The format specifier
+ * @args: The argument list
  *
- * Return: The number of characters printed.
+ * Return: The number of characters printed
  */
 int process_specifier(char specifier, va_list args)
 {
@@ -91,17 +118,11 @@ int process_specifier(char specifier, va_list args)
 		case 'p':
 			printed_chars += p_specifier(args);
 			break;
-		case '+':
-			printed_chars += plus_non_custom_specifier(args);
-			break;
-		case ' ':
-			printed_chars += space_non_custom_specifier(args);
-			break;
-		case '#':
-			printed_chars += hash_flag_specifier(args, specifier);
-			break;
 		case '%':
 			printed_chars += _putchar('%');
+			break;
+		case 'r':
+			printed_chars += r_specifier(args);
 			break;
 		default:
 			printed_chars += _putchar('%');

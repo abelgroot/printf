@@ -15,8 +15,10 @@ int plus_non_custom_specifier(va_list args)
 	{
 		_putchar('+');
 		printed_chars += 1;
+		
 	}
 	printed_chars += print_number(k);
+
 	return (printed_chars);
 }
 
