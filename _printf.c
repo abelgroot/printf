@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
-* print_format - Processes a format specifier.
-* @format: The format specifier.
-* @args: The list of arguments.
+* print_format - processes a format specifier.
+* @format: the format specifier.
+* @args: the list of arguments.
 *
-* Return: The number of characters printed.
+* Return: the number of characters printed.
 */
 int print_format(const char format, va_list args)
 {
@@ -19,12 +19,17 @@ int print_format(const char format, va_list args)
 		case 's':
 			printed_chars += s_specifier(args);
 			break;
+		case 'S':
+			printed_chars += S_specifier(args);
+			break;
 		case '%':
 			printed_chars += modulo_specifier(args);
 			break;
 		case 'd':
-		case 'i':
 			printed_chars += d_specifier(args);
+			break;
+		case 'i':
+			printed_chars += i_specifier(args);
 			break;
 		case 'b':
 			printed_chars += b_specifier(args);
@@ -41,22 +46,19 @@ int print_format(const char format, va_list args)
 		case 'X':
 			printed_chars += X_specifier(args);
 			break;
-		case 'S':
-			printed_chars += S_specifier(args);
-			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(format);
-		break;
+			break;
 	}
 	return (printed_chars);
 }
 
 /**
-* _printf - Function that produces output according to a format.
-* @format: A character string composed of zero or more directives.
+* _printf - function that produces output according to a format.
+* @format: is a character string composed of zero or more directives.
 *
-* Return: The number of characters printed.
+* Return: the number of characters printed.
 */
 int _printf(const char *format, ...)
 {
@@ -65,7 +67,7 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
@@ -84,5 +86,7 @@ int _printf(const char *format, ...)
 	}
 
 	va_end(args);
+	_flush_buffer();
 	return (printed_chars);
 }
+

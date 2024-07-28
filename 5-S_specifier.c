@@ -12,7 +12,7 @@ int S_specifier(va_list args)
 	int printed_chars = 0;
 
 	if (!str)
-	str = "(null)";
+		str = "(null)";
 
 	while (*str)
 	{
