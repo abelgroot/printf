@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define BUFFER_SIZE 1024
+
 #include <stdarg.h>
 #include <stdlib.h>
 #include <limits.h>
@@ -26,7 +28,9 @@ int x_specifier(va_list args);
 int X_specifier(va_list args);
 
 int print_number(int);
+
 int _putchar(char c);
+void _flush_buffer(void);
 
 int _printf(const char *format, ...);
 
