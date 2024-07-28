@@ -69,6 +69,8 @@ int main(void)
 
 	printf("\n");
     _printf("binary of 10000 :[%b]\n",10000);
+    _printf("Unsigned:[%u]\n", -1);
+    printf("Unsigned:[%u]\n", -1);
     _printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
     _printf("Unsigned octal:[%o]\n", ui);
