@@ -1,41 +1,36 @@
 #include "main.h"
 
 /**
-* uoxX_specifier - Handles the 'u', 'o', 'x', 'X' specifiers.
-* @args: Argument list.
-* @specifier: Format specifier.
+* uoxX_specifier - Handles unsigned, octal, and hex specifiers
+* @args: The list of arguments
+* @specifier: The specifier character
 *
-* Return: The number of characters printed.
+* Return: Number of characters printed
 */
 int uoxX_specifier(va_list args, char specifier)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int printed_chars = 0;
 
 	switch (specifier)
 	{
 		case 'u':
-			printed_chars = print_unsigned_number(num);
-			break;
+			return (print_unsigned_number(num));
 		case 'o':
-			printed_chars = convert_and_print(num, 8, "0123456789");
-			break;
+			return (convert_and_print(num, 8, "0123456789"));
 		case 'x':
-			printed_chars = convert_and_print(num, 16, "0123456789abcdef");
-			break;
+			return (convert_and_print(num, 16, "0123456789abcdef"));
 		case 'X':
-			printed_chars = convert_and_print(num, 16, "0123456789ABCDEF");
-			break;
+			return (convert_and_print(num, 16, "0123456789ABCDEF"));
+		default:
+			return (0);
 	}
-
-	return (printed_chars);
 }
 
 /**
-* print_unsigned_number - Prints an unsigned number.
-* @n: The number to print.
+* print_unsigned_number - Prints an unsigned number
+* @n: The number to print
 *
-* Return: The number of characters printed.
+* Return: Number of characters printed
 */
 int print_unsigned_number(unsigned int n)
 {
@@ -43,42 +38,26 @@ int print_unsigned_number(unsigned int n)
 
 	if (n / 10)
 		printed_chars += print_unsigned_number(n / 10);
-	printed_chars += _putchar((n % 10) + '0');
-
+	_putchar(n % 10 + '0');
+	printed_chars++;
 	return (printed_chars);
 }
 
 /**
-* convert_and_print - Converts a number to a specified base and prints it.
-* @num: The number to convert.
-* @base: The base to convert to.
-* @digits: The characters used for the conversion.
+* convert_and_print - Converts and prints a number in a given base
+* @num: The number to convert and print
+* @base: The base to convert to
+* @digits: The digits to use for conversion
 *
-* Return: The number of characters printed.
+* Return: Number of characters printed
 */
 int convert_and_print(unsigned int num, unsigned int base, const char *digits)
 {
 	int printed_chars = 0;
-	char buffer[32];
-	int i = 30;
 
-	buffer[31] = '\0';
-	if (num == 0)
-	{
-		buffer[30] = '0';
-		i = 29;
-	}
-	while (num > 0)
-	{
-		buffer[i--] = digits[num % base];
-		num /= base;
-	}
-
-	for (i++; buffer[i]; i++)
-	{
-		printed_chars += _putchar(buffer[i]);
-	}
-
+	if (num / base)
+		printed_chars += convert_and_print(num / base, base, digits);
+	_putchar(digits[num % base]);
+	printed_chars++;
 	return (printed_chars);
 }
-

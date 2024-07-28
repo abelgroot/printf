@@ -41,8 +41,9 @@ int p_specifier(va_list args);
 int print_big_number(unsigned long n);
 
 /* Flag specifiers */
-int plus_flag_specifier(va_list args, char specifier);
-int space_flag_specifier(va_list args, char specifier);
+int plus_non_custom_specifier(va_list args);
+int space_non_custom_specifier(va_list args);
 int hash_flag_specifier(va_list args, char specifier);
 
 #endif /* MAIN_H */
+

@@ -1,64 +1,59 @@
 #include "main.h"
 
 /**
-* plus_flag_specifier - Handles the plus flag for specifiers.
-* @args: Argument list.
-* @specifier: Format specifier.
+* plus_non_custom_specifier - Handles the '+' flag for non-custom specifiers.
+* @args: The argument list.
 *
 * Return: The number of characters printed.
 */
-int plus_flag_specifier(va_list args, char specifier)
+int plus_non_custom_specifier(va_list args)
 {
+	int k = va_arg(args, int);
 	int printed_chars = 0;
-	int n = va_arg(args, int);
 
-	if (specifier == 'd' || specifier == 'i')
+	if (k >= 0)
 	{
-		if (n >= 0)
-		{
-			printed_chars += _putchar('+');
-			printed_chars += print_number(n);
-		}
-		else
-		{
-			printed_chars += print_number(n);
-		}
+		_putchar('+');
+		printed_chars += print_number(k);
+		printed_chars += 1;
+	}
+	else
+	{
+		printed_chars += print_number(k);
+		printed_chars += 1;
 	}
 	return (printed_chars);
 }
 
 /**
-* space_flag_specifier - Handles the space flag for specifiers.
-* @args: Argument list.
-* @specifier: Format specifier.
+* space_non_custom_specifier - Handles the ' ' flag for non-custom specifiers.
+* @args: The argument list.
 *
 * Return: The number of characters printed.
 */
-
-int space_flag_specifier(va_list args, char specifier)
+int space_non_custom_specifier(va_list args)
 {
+	int k = va_arg(args, int);
 	int printed_chars = 0;
-	int n = va_arg(args, int);
 
-	if (specifier == 'd' || specifier == 'i')
+	if (k >= 0)
 	{
-		if (n >= 0)
-		{
-			printed_chars += _putchar(' ');
-			printed_chars += print_number(n);
-		}
-		else
-		{
-			printed_chars += print_number(n);
-		}
+		_putchar(' ');
+		printed_chars += print_number(k);
+		printed_chars += 1;
+	}
+	else
+	{
+		printed_chars += print_number(k);
+		printed_chars += 1;
 	}
 	return (printed_chars);
 }
 
 /**
-* hash_flag_specifier - Handles the hash flag for specifiers.
-* @args: Argument list.
-* @specifier: Format specifier.
+* hash_flag_specifier - Handles the '#' flag for 'o', 'x', and 'X' specifiers.
+* @args: The argument list.
+* @specifier: The specifier character.
 *
 * Return: The number of characters printed.
 */
@@ -73,14 +68,12 @@ int hash_flag_specifier(va_list args, char specifier)
 	}
 	else if (specifier == 'x')
 	{
-		printed_chars += _putchar('0');
-		printed_chars += _putchar('x');
+		printed_chars += _puts("0x");
 		printed_chars += x_specifier(args);
 	}
 	else if (specifier == 'X')
 	{
-		printed_chars += _putchar('0');
-		printed_chars += _putchar('X');
+		printed_chars += _puts("0X");
 		printed_chars += X_specifier(args);
 	}
 	return (printed_chars);
