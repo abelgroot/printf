@@ -28,6 +28,9 @@ int b_specifier(va_list args);
 
 int S_specifier(va_list args);
 
+int p_specifier(va_list args);
+int print_big_number(unsigned long n);
+
 int print_number(int n);
 int print_unsigned_number(unsigned int n);
 int convert_and_print(unsigned int num, unsigned int base, const char *digits);
