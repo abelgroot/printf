@@ -10,14 +10,14 @@
 int main(void)
 {
 	int len;
-  int len2;
+    int len2;
 	char *str1, *str2;
 
 	str1 = "Newton";
 	str2 = "Abel";
 
-  len = _printf("Let's try to printf a simple sentence.\n");
-  len2 = printf("Let's try to printf a simple sentence.\n");
+    len = _printf("Let's try to printf a simple sentence.\n"); 
+    len2 = printf("Let's try to printf a simple sentence.\n");
 
 
 	_printf("_print character %c and %c\n", 'a', '%');
@@ -27,8 +27,44 @@ int main(void)
 	_printf("_print string %s and %s\n", str1, str2);
 	printf("print string %s and %s\n", str1, str2);
 	printf("\n");
+    
+    _printf("Character:[%c]\n", 'H');
+    printf("Character:[%c]\n", 'H');
+    
+	printf("\n");
 
-	/**
+    _printf("String:[%s]\n", "I am a string !");
+    printf("String:[%s]\n", "I am a string !");
+
+	printf("\n");
+    
+    printf("printf INT_MIN %d\n", INT_MIN);
+    printf("printf INT_MAX %d\n", INT_MAX);
+    
+    printf("\n");
+    
+    _printf("_printf INT_MIN %d\n", INT_MIN);
+    _printf("_printf INT_MAX %d\n", INT_MAX);
+
+
+    printf("\n");
+    
+    _printf("_printf 10 digit of 1s  %d\n", 3147483648);
+    printf("printf 10 digit of 1s %d\n", 3147483648);
+
+
+	printf("\n");
+    _printf("Length:[%d, %i]\n", len, len);
+    printf("Length:[%d, %i]\n", len2, len2);
+    _printf("Negative:[%d]\n", -762534);
+    printf("Negative:[%d]\n", -762534);
+
+
+	printf("\n");
+    _printf("Negative:[%d]\n", "string");
+    printf("Negative:[%d]\n", "string");
+
+/**
 	_printf("_Print returned length: %i\n", len);
 	printf("Print returned length: %i\n", len2);
 	printf("\n");
@@ -81,14 +117,5 @@ int main(void)
 	printf("\n");
 
 */
-    len = _printf("Character:[%c]\n", 'H');
-	len2 = printf("Character:[%c]\n", 'H');
-
-
-    _printf("String:[%s]\n", 123);
-    
-	printf("%d\n", len);
-	printf("%d\n", len2);
-
 	return (0);
 }
