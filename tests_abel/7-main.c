@@ -43,6 +43,11 @@ int main(void)
 	printf("Expected: %#X\n", num);
 	_printf("Result:   %#X\n", num);
 	_printf("\n");
+	/*T*/
+	_printf("Testing the '#' flag for 'X' specifier:\n");
+	printf("Expected: %r\n", num);
+	_printf("Result:   %#X\n", num);
+	_printf("\n");
 
 	return (0);
 }

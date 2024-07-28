@@ -120,6 +120,7 @@ hash_flag = 1;
 specifier = va_arg(args, int);
 }
 
+<<<<<<< HEAD
 switch (specifier)
 {
 case 'c':
@@ -201,3 +202,65 @@ break;
 }
 return (printed_chars);
 }
+=======
+	switch (specifier)
+	{
+		case 'c':
+			printed_chars += c_specifier(args);
+			break;
+		case 's':
+			printed_chars += s_specifier(args);
+			break;
+		case 'd':
+		case 'i':
+			if (plus_flag)
+				printed_chars += plus_non_custom_specifier(args);
+			else if (space_flag)
+				printed_chars += space_non_custom_specifier(args);
+			else
+				printed_chars += i_specifier(args);
+			break;
+		case 'u':
+			printed_chars += u_specifier(args);
+			break;
+		case 'o':
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'o');
+			else
+				printed_chars += o_specifier(args);
+			break;
+		case 'x': /* %+d */
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'x');
+			else
+				printed_chars += x_specifier(args);
+			break;
+		case 'X':
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'X');
+			else
+				printed_chars += X_specifier(args);
+			break;
+		case 'b':
+			printed_chars += b_specifier(args);
+			break;
+		case 'S':
+			printed_chars += S_specifier(args);
+			break;
+		case 'p':
+			printed_chars += p_specifier(args);
+			break;
+		case '%':
+			printed_chars += _putchar('%');
+			break;
+		case 'r':
+			printed_chars += r_specifier(args);
+			break;
+		default:
+			printed_chars += _putchar('%');
+			printed_chars += _putchar(specifier);
+			break;
+	}
+	return (printed_chars);
+}
+>>>>>>> refs/remotes/origin/main
