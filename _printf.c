@@ -11,7 +11,7 @@ int print_format(const char *format, va_list args)
 {
 	int i, printed_chars = 0;
 	char specifier;
-	char length_modifier;
+	char length_modifier = 0;
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -27,11 +27,6 @@ int print_format(const char *format, va_list args)
 			length_modifier = format[i];
 			i++;
 		}
-		else
-		{
-			length_modifier = '\0';
-		}
-
 		specifier = format[i];
 		if (specifier == '+')
 		{
@@ -69,6 +64,7 @@ int print_format(const char *format, va_list args)
 	{
 		printed_chars += _putchar(format[i]);
 	}
+	}	
 	return (printed_chars);
 }
 
