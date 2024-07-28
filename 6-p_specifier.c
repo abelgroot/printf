@@ -13,7 +13,7 @@ int p_specifier(va_list args)
 
 	if (addr == 0)
 		return (_putchar('(') + _putchar('n') +
-		_putchar('i') + _putchar('l') + _putchar(')'));
+			_putchar('i') + _putchar('l') + _putchar(')'));
 
 	return (_putchar('0') + _putchar('x') + print_big_number(addr));
 }
