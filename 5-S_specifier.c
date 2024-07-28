@@ -3,7 +3,9 @@
 #include "main.h"
 
 /**
- * S_specifier - Prints a string with special handling for non-printable characters
+ * S_specifier - Prints a string with special handling
+ * for non-printable characters
+ *
  * @args: Variable argument list
  * Return: Number of characters printed
  */

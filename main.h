@@ -4,8 +4,6 @@
 #define BUFFER_SIZE 1024
 
 #include <stdarg.h>
-#include <stdlib.h>
-#include <limits.h>
 
 #ifndef NULL
 #define NULL ((void *)0)

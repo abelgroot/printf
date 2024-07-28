@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
 * b_specifier - Converts an unsigned int to binary and prints it.

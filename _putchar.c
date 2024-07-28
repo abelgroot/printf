@@ -2,7 +2,7 @@
 
 
 static char buffer[BUFFER_SIZE];
-static int buffer_index = 0;
+static int buffer_index;
 
 /**
 * _putchar - writes a character to the buffer and flushes when full.
@@ -33,4 +33,3 @@ void _flush_buffer(void)
 		buffer_index = 0;
 	}
 }
-
