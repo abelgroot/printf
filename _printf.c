@@ -19,7 +19,7 @@ int print_format(const char *format, va_list args)
 			i++;
 			if (format[i] == '\0')
 			{
-				return (-1);
+			return (-1);
 			}
 			specifier = format[i];
 			printed_chars += process_specifier(specifier, args);
