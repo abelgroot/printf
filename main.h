@@ -31,7 +31,10 @@ char *convert_to_binary(unsigned int num);
 int print_binary_string(char *binary_str);
 
 /* Unsigned, octal, hex specifiers */
-int uoxX_specifier(va_list args, char specifier);
+int u_specifier(va_list args);
+int o_specifier(va_list args);
+int x_specifier(va_list args);
+int X_specifier(va_list args);
 int print_unsigned_number(unsigned int n);
 int convert_and_print(unsigned int num, unsigned int base, const char *digits);
 
@@ -50,4 +53,3 @@ int space_non_custom_specifier(va_list args);
 int hash_flag_specifier(va_list args, char specifier);
 
 #endif /* MAIN_H */
-

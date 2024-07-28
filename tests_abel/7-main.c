@@ -1,5 +1,5 @@
 #include "../main.h"
-
+#include <stdio.h>
 /**
 * main - Entry point for testing flag specifiers.
 *
@@ -12,10 +12,10 @@ int main(void)
 
 	/* Test the '+' flag */
 	_printf("Testing the '+' flag:\n");
-	printf("Expected: %+d done\n", num);
-	_printf("Result:   %+d done\n", num);
-	printf("Expected: %+d done\n", neg_num);
-	_printf("Result:   %+d done\n", neg_num);
+	_printf("Expected: %+d\n", num);
+	_printf("Result:   %+d\n", num);
+	_printf("Expected: %+d\n", neg_num);
+	_printf("Result:   %+d\n", neg_num);
 	_printf("\n");
 
 	/* Test the ' ' (space) flag */
