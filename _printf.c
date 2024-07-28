@@ -79,10 +79,16 @@ int process_specifier(char specifier, va_list args)
 			printed_chars += b_specifier(args);
 			break;
 		case 'u':
+			printed_chars += u_specifier(args);
+			break;
 		case 'o':
+			printed_chars += o_specifier(args);
+			break;
 		case 'x':
+			printed_chars += x_specifier(args);
+			break;
 		case 'X':
-			printed_chars += uoxX_specifier(args, specifier);
+			printed_chars += X_specifier(args);
 			break;
 		case 'S':
 			printed_chars += S_specifier(args);
