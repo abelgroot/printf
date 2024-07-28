@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * print_format - processes a format specifier.
  * @format: the format specifier.
@@ -42,6 +41,9 @@ int print_format(const char format, va_list args)
 			break;
 		case 'X':
 			printed_chars += X_specifier(args);
+			break;
+		case 'S':
+			printed_chars += S_specifier(args);
 			break;
 		default:
 			printed_chars += _putchar('%');
