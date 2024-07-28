@@ -41,6 +41,9 @@ int print_format(const char format, va_list args)
 		case 'X':
 			printed_chars += X_specifier(args);
 			break;
+		case 'S':
+			printed_chars += S_specifier(args);
+			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(format);
