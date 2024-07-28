@@ -62,6 +62,19 @@ int _printf(const char *format, ...)
 int process_specifier(char specifier, va_list args)
 {
 	int printed_chars = 0;
+	int plus_flag = 0, space_flag = 0, hash_flag = 0;
+
+	while (specifier == '+' || specifier == ' ' || specifier == '#')
+	{
+		if (specifier == '+')
+			plus_flag = 1;
+		else if (specifier == ' ')
+			space_flag = 1;
+		else if (specifier == '#')
+			hash_flag = 1;
+
+		specifier = va_arg(args, int);
+	}
 
 	switch (specifier)
 	{
@@ -73,22 +86,36 @@ int process_specifier(char specifier, va_list args)
 			break;
 		case 'd':
 		case 'i':
-			printed_chars += i_specifier(args);
-			break;
-		case 'b':
-			printed_chars += b_specifier(args);
+			if (plus_flag)
+				printed_chars += plus_non_custom_specifier(args);
+			else if (space_flag)
+				printed_chars += space_non_custom_specifier(args);
+			else
+				printed_chars += i_specifier(args);
 			break;
 		case 'u':
 			printed_chars += u_specifier(args);
 			break;
 		case 'o':
-			printed_chars += o_specifier(args);
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'o');
+			else
+				printed_chars += o_specifier(args);
 			break;
 		case 'x':
-			printed_chars += x_specifier(args);
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'x');
+			else
+				printed_chars += x_specifier(args);
 			break;
 		case 'X':
-			printed_chars += X_specifier(args);
+			if (hash_flag)
+				printed_chars += hash_flag_specifier(args, 'X');
+			else
+				printed_chars += X_specifier(args);
+			break;
+		case 'b':
+			printed_chars += b_specifier(args);
 			break;
 		case 'S':
 			printed_chars += S_specifier(args);
@@ -96,22 +123,13 @@ int process_specifier(char specifier, va_list args)
 		case 'p':
 			printed_chars += p_specifier(args);
 			break;
-		case '+':
-			printed_chars += plus_non_custom_specifier(args);
-			break;
-		case ' ':
-			printed_chars += space_non_custom_specifier(args);
-			break;
-		case '#':
-			printed_chars += hash_flag_specifier(args, specifier);
-			break;
 		case '%':
 			printed_chars += _putchar('%');
 			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(specifier);
-			break;
+		break;
 	}
 	return (printed_chars);
 }
