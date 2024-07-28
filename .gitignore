@@ -1,6 +1,7 @@
 #folders and files
 .vscode/
 test/
+tests/
 
 # compiled files
 *.out
