@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#define BUFFER_SIZE 1024
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 void _flush_buffer(void);
