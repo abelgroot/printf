@@ -1,11 +1,10 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
-* u_specifier - Handles the %u specifier
-* @args: The arguments list
+* u_specifier - a function that prints unsigned decimal.
+* @args: input argument from our _printf function.
 *
-* Return: The number of characters printed
+* Return: number of characters printed.
 */
 int u_specifier(va_list args)
 {
@@ -15,23 +14,23 @@ int u_specifier(va_list args)
 }
 
 /**
-* o_specifier - Handles the %o specifier
-* @args: The arguments list
+* o_specifier - a function that prints octal.
+* @args: input argument from our _printf function.
 *
-* Return: The number of characters printed
+* Return: number of characters printed.
 */
 int o_specifier(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
 
-	return (convert_and_print(num, 8, "0123456789"));
+	return (convert_and_print(num, 8, "01234567"));
 }
 
 /**
-* x_specifier - Handles the %x specifier
-* @args: The arguments list
+* x_specifier - a function that prints hexadecimal with small letters.
+* @args: input argument from our _printf function.
 *
-* Return: The number of characters printed
+* Return: number of characters printed.
 */
 int x_specifier(va_list args)
 {
@@ -41,10 +40,10 @@ int x_specifier(va_list args)
 }
 
 /**
-* X_specifier - Handles the %X specifier
-* @args: The arguments list
+* X_specifier - a function that prints hexadecimal with capital letters.
+* @args: input argument from our _printf function.
 *
-* Return: The number of characters printed
+* Return: number of characters printed.
 */
 int X_specifier(va_list args)
 {
@@ -54,35 +53,34 @@ int X_specifier(va_list args)
 }
 
 /**
-* print_unsigned_number - Prints an unsigned number
-* @n: The number to print
+* print_unsigned_number - a function that prints an unsigned number.
+* @n: the unsigned number to print.
 *
-* Return: The number of characters printed
+* Return: number of characters printed.
 */
 int print_unsigned_number(unsigned int n)
 {
-	int printed_chars = 0;
+int printed_chars = 0;
 
 	if (n / 10)
 		printed_chars += print_unsigned_number(n / 10);
 
-	_putchar(n % 10 + '0');
-	printed_chars++;
+	printed_chars += _putchar((n % 10) + '0');
 
 	return (printed_chars);
 }
 
 /**
-* convert_and_print - Converts a number to a different base and prints it
-* @num: The number to convert
-* @base: The base to convert to
-* @digits: The characters representing digits in the base
+* convert_and_print - Converts and prints a number in a specified base.
+* @num: The number to convert and print.
+* @base: The base to convert to.
+* @digits: The digits to use for the conversion.
 *
-* Return: The number of characters printed
+* Return: The number of characters printed.
 */
 int convert_and_print(unsigned int num, unsigned int base, const char *digits)
 {
-	char buffer[50];
+	char buffer[32];
 	int i = 0, printed_chars = 0;
 
 	if (num == 0)
