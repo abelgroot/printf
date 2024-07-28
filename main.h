@@ -29,6 +29,7 @@ int plus_non_custom_specifier(va_list args);
 int space_non_custom_specifier(va_list args);
 int hash_x_non_custom_specifier(va_list args);
 int hash_X_non_custom_specifier(va_list args);
+int p_specifier(va_list args);
 
 int print_hex_char(unsigned int s);
 int print_number(int);

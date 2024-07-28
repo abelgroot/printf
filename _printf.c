@@ -45,6 +45,9 @@ int print_format(const char format, va_list args)
 		case 'S':
 			printed_chars += S_specifier(args);
 			break;
+		case 'p':
+			printed_chars += p_specifier(args);
+			break;
 		case '+':
 			if(((format + 1) == 'd') || (format[i+1] =='i'))
 			{
