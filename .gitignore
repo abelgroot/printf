@@ -1,8 +1,5 @@
 #folders and files
 .vscode/
-test/
-tests/*
-tests/
 
 # compiled files
 *.out
