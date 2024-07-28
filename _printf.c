@@ -1,95 +1,69 @@
 #include "main.h"
 
-/**
-* print_format - processes a format specifier.
-* @format: the format specifier.
-* @args: the list of arguments.
-*
-* Return: the number of characters printed.
-*/
-int print_format(const char format, va_list args)
+int print_format(const char *format, va_list args)
 {
 	int printed_chars = 0;
+	int flag_plus = 0, flag_space = 0, flag_hash = 0;
+	int i = 0;
 
-	switch (format)
+	while (format[i] == '+' || format[i] == ' ' || format[i] == '#')
 	{
-		case 'c':
-			printed_chars += c_specifier(args);
-			break;
-		case 's':
-			printed_chars += s_specifier(args);
-			break;
-		case 'S':
-			printed_chars += S_specifier(args);
-			break;
-		case '%':
-			printed_chars += modulo_specifier(args);
-			break;
-		case 'd':
-			printed_chars += d_specifier(args);
-			break;
-		case 'i':
-			printed_chars += i_specifier(args);
-			break;
-		case 'b':
-			printed_chars += b_specifier(args);
-			break;
-		case 'u':
-			printed_chars += u_specifier(args);
-			break;
-		case 'o':
-			printed_chars += o_specifier(args);
-			break;
-		case 'x':
-			printed_chars += x_specifier(args);
-			break;
-		case 'X':
-			printed_chars += X_specifier(args);
-			break;
-		case 'p':
-			printed_chars += p_specifier(args);
-			break;
-		default:
-			printed_chars += _putchar('%');
-			printed_chars += _putchar(format);
-			break;
+		if (format[i] == '+')
+			flag_plus = 1;
+		else if (format[i] == ' ')
+			flag_space = 1;
+		else if (format[i] == '#')
+			flag_hash = 1;
+		i++;
 	}
-	return (printed_chars);
-}
 
-/**
-* _printf - function that produces output according to a format.
-* @format: is a character string composed of zero or more directives.
-*
-* Return: the number of characters printed.
-*/
-int _printf(const char *format, ...)
-{
-	va_list args;
-	int i, printed_chars = 0;
+	char specifier = format[i];
 
-	va_start(args, format);
-
-	for (i = 0; format && format[i] != '\0'; i++)
+	if (flag_plus && (specifier == 'd' || specifier == 'i'))
+		printed_chars += plus_flag_specifier(args, specifier);
+	else if (flag_space && (specifier == 'd' || specifier == 'i'))
+		printed_chars += space_flag_specifier(args, specifier);
+	else if (flag_hash && (specifier == 'x'
+			|| specifier == 'X' || specifier == 'o'))
+		printed_chars += hash_flag_specifier(args, specifier);
+	else
 	{
-		if (format[i] == '%')
+		switch (specifier)
 		{
-			i++;
-			if (format[i] == '\0')
-			{
-				va_end(args);
-				return (-1);
-			}
-			printed_chars += print_format(format[i], args);
-		}
-		else
-		{
-			printed_chars += _putchar(format[i]);
+			case 'c':
+				printed_chars += c_specifier(args);
+				break;
+			case 's':
+				printed_chars += s_specifier(args);
+				break;
+			case '%':
+				printed_chars += modulo_specifier(args);
+				break;
+			case 'd':
+			case 'i':
+				printed_chars += d_specifier(args);
+				break;
+			case 'b':
+				printed_chars += b_specifier(args);
+				break;
+			case 'u':
+			case 'o':
+			case 'x':
+			case 'X':
+				printed_chars += uoxX_specifier(args, specifier);
+				break;
+			case 'S':
+				printed_chars += S_specifier(args);
+				break;
+			case 'p':
+				printed_chars += p_specifier(args);
+				break;
+			default:
+				printed_chars += _putchar('%');
+				printed_chars += _putchar(specifier);
+			break;
 		}
 	}
 
-	va_end(args);
-	_flush_buffer();
 	return (printed_chars);
 }
-
