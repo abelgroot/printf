@@ -14,14 +14,9 @@ int plus_non_custom_specifier(va_list args)
 	if (k >= 0)
 	{
 		_putchar('+');
-		printed_chars += print_number(k);
 		printed_chars += 1;
 	}
-	else
-	{
-		printed_chars += print_number(k);
-		printed_chars += 1;
-	}
+	printed_chars += print_number(k);
 	return (printed_chars);
 }
 
@@ -33,21 +28,16 @@ int plus_non_custom_specifier(va_list args)
 */
 int space_non_custom_specifier(va_list args)
 {
-	int k = va_arg(args, int);
-	int printed_chars = 0;
+int k = va_arg(args, int);
+int printed_chars = 0;
 
-	if (k >= 0)
-	{
-		_putchar(' ');
-		printed_chars += print_number(k);
-		printed_chars += 1;
-	}
-	else
-	{
-		printed_chars += print_number(k);
-		printed_chars += 1;
-	}
-	return (printed_chars);
+if (k >= 0)
+{
+_putchar(' ');
+printed_chars += 1;
+}
+printed_chars += print_number(k);
+return (printed_chars);
 }
 
 /**
@@ -63,17 +53,20 @@ int hash_flag_specifier(va_list args, char specifier)
 
 	if (specifier == 'o')
 	{
-		printed_chars += _putchar('0');
+		_putchar('0');
+		printed_chars += 1;
 		printed_chars += uoxX_specifier(args, 'o');
 	}
 	else if (specifier == 'x')
 	{
-		printed_chars += _puts("0x");
+		_puts("0x");
+		printed_chars += 2;
 		printed_chars += uoxX_specifier(args, 'x');
 	}
 	else if (specifier == 'X')
 	{
-		printed_chars += _puts("0X");
+		_puts("0X");
+		printed_chars += 2;
 		printed_chars += uoxX_specifier(args, 'X');
 	}
 	return (printed_chars);
