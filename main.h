@@ -24,10 +24,16 @@ int u_specifier(va_list args);
 int o_specifier(va_list args);
 int x_specifier(va_list args);
 int X_specifier(va_list args);
-int print_hex_char(unsigned int s);
 
+int plus_non_custom_specifier(va_list args);
+int space_non_custom_specifier(va_list args);
+int hash_x_non_custom_specifier(va_list args);
+int hash_X_non_custom_specifier(va_list args);
+
+int print_hex_char(unsigned int s);
 int print_number(int);
 int _putchar(char c);
+void _puts(char *str);
 
 int _printf(const char *format, ...);
 

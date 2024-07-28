@@ -45,6 +45,58 @@ int print_format(const char format, va_list args)
 		case 'S':
 			printed_chars += S_specifier(args);
 			break;
+		case '+':
+			if(((format + 1) == 'd') || (format[i+1] =='i'))
+			{
+				while(format[i+2])
+					{
+						printed_chars += plus_non_custom_specifier(args);
+						i++;
+						continue;
+						
+					}
+			}
+			else
+				_puts("'+' flag should only be used with 'd' or 'i'");
+			break;
+		case ' ':
+			if((format[i+1] == 'd') || (format[i+1] =='i'))
+			{
+				while(format[i+2])
+					{
+						printed_chars += space_non_custom_specifier(args);
+						i++;
+						continue;
+						
+					}
+			}
+			else
+				_puts("'space' flag should only be used with 'd' or 'i'");
+			break;
+		case '#':
+			if((format[i+1] == 'x'))
+			{
+				while(format[i+2])
+					{
+						printed_chars += hash_x_non_custom_specifier(args);
+						i++;
+						continue;
+						
+					}
+			}
+			else if((format[i+1] == 'X'))
+			{
+				while(format[i+2])
+					{
+						printed_chars += hash_X_non_custom_specifier(args);
+						i++;
+						continue;
+						
+					}
+			}
+			else
+				_puts("'space' flag should only be used with 'd' or 'i'");
+			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(format);
