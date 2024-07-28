@@ -31,6 +31,18 @@ int print_format(const char format, va_list args)
 		case 'b':
 			printed_chars += b_specifier(args);
 			break;
+		case 'u':
+			printed_chars += u_specifier(args);
+			break;
+		case 'o':
+			printed_chars += o_specifier(args);
+			break;
+		case 'x':
+			printed_chars += x_specifier(args);
+			break;
+		case 'X':
+			printed_chars += X_specifier(args);
+			break;
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(format);
