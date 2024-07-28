@@ -129,7 +129,7 @@ int process_specifier(char specifier, va_list args)
 		default:
 			printed_chars += _putchar('%');
 			printed_chars += _putchar(specifier);
-		break;
+			break;
 	}
 	return (printed_chars);
 }
