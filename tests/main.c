@@ -12,8 +12,11 @@ int main(void)
 	int len;
     int len2;
 	char *str1, *str2;
+    unsigned int ui;
 
-	str1 = "Newton";
+    ui = (unsigned int)INT_MAX + 1024;
+	
+    str1 = "Newton";
 	str2 = "Abel";
 
     len = _printf("Let's try to printf a simple sentence.\n"); 
@@ -65,7 +68,17 @@ int main(void)
     printf("Negative:[%d]\n", "string");
 
 	printf("\n");
-    _printf("Negative:[%b]\n",10000);
+    _printf("binary of 10000 :[%b]\n",10000);
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+
+
+
+
 /**
 	_printf("_Print returned length: %i\n", len);
 	printf("Print returned length: %i\n", len2);
