@@ -14,7 +14,6 @@ int modulo_specifier(va_list args);
 
 int print_number(int);
 int _putchar(char c);
-void _puts(char *str);
 
 int _printf(const char *format, ...);
 
