@@ -11,7 +11,7 @@ int print_format(const char *format, va_list args)
 {
 	int i, printed_chars = 0;
 	char specifier;
-
+	
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -42,28 +42,27 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int printed_chars;
-
+	
 	va_start(args, format);
 	printed_chars = print_format(format, args);
 	va_end(args);
-
+	
 	_flush_buffer();
-
+	
 	return (printed_chars);
 }
 
-
 /**
- * process_specifier - Processes a format specifier.
- * @specifier: The format specifier.
- * @args: The argument list.
- *
- * Return: The number of characters printed.
- */
+* process_specifier - Processes a format specifier.
+* @specifier: The format specifier.
+* @args: The argument list.
+*
+* Return: The number of characters printed.
+*/
 int process_specifier(char specifier, va_list args)
 {
 	int printed_chars = 0;
-
+	
 	switch (specifier)
 	{
 		case 'c':

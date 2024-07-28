@@ -28,16 +28,16 @@ int plus_non_custom_specifier(va_list args)
 */
 int space_non_custom_specifier(va_list args)
 {
-int k = va_arg(args, int);
-int printed_chars = 0;
+	int k = va_arg(args, int);
+	int printed_chars = 0;
 
-if (k >= 0)
-{
-_putchar(' ');
-printed_chars += 1;
-}
-printed_chars += print_number(k);
-return (printed_chars);
+	if (k >= 0)
+	{
+		_putchar(' ');
+		printed_chars += 1;
+	}
+	printed_chars += print_number(k);
+	return (printed_chars);
 }
 
 /**
