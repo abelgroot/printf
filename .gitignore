@@ -1,0 +1,9 @@
+#folders and files
+.vscode/
+
+# compiled files
+*.out
+*.exe
+
+#lazy commit
+commit.git
