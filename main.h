@@ -1,13 +1,16 @@
-#ifndef MAIN_H
+fndef MAIN_H
 #define MAIN_H
+
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 #define BUFFER_SIZE 1024
 
-#include <stdarg.h>
+int _putchar(char c);
+void _flush_buffer(void);
 
-#ifndef NULL
-#define NULL ((void *)0)
-#endif /* NULL */
+int _printf(const char *format, ...);
 
 int c_specifier(va_list args);
 int s_specifier(va_list args);
@@ -16,21 +19,16 @@ int modulo_specifier(va_list args);
 int d_specifier(va_list args);
 int i_specifier(va_list args);
 
-int b_specifier(va_list args);
-char *convert_to_binary(unsigned int num);
-int print_binary_string(char *binary_str);
-int S_specifier(va_list args);
 int u_specifier(va_list args);
 int o_specifier(va_list args);
 int x_specifier(va_list args);
 int X_specifier(va_list args);
-int print_hex_char(unsigned int s);
 
-int print_number(int);
+int b_specifier(va_list args);
 
-int _putchar(char c);
-void _flush_buffer(void);
-
-int _printf(const char *format, ...);
+int print_number(int n);
+int print_unsigned_number(unsigned int n);
+int convert_and_print(unsigned int num, int base, const char *digits);
 
 #endif /* MAIN_H */
+
