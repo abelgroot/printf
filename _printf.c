@@ -142,6 +142,21 @@ int process_specifier(char specifier, va_list args, char length_modifier)
 				else
 					printed_chars += X_specifier(args);
 				break;
+			case 'b':
+				printed_chars += b_specifier(args);
+				break;
+			case 'p':
+				printed_chars += p_specifier(args);
+				break;
+			case 'S':
+				printed_chars += S_specifier(args);
+				break;
+			case 'r':
+				printed_chars += r_specifier(args);
+				break;
+			case '%':
+				printed_chars += _putchar('%');
+				break;
 			default:
 				_putchar('%');
 				_putchar(specifier);
