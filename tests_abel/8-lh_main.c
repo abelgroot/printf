@@ -25,7 +25,6 @@ int main(void)
     _printf("Address:[%p]\n", addr);
     printf("Address:[%p]\n", addr);
 
-    // Test the length modifiers
     _printf("Long integer:[%ld]\n", 1234567890123456789L);
     printf("Long integer:[%ld]\n", 1234567890123456789L);
     _printf("Long unsigned integer:[%lu]\n", 12345678901234567890UL);
@@ -44,7 +43,6 @@ int main(void)
     _printf("Short hex:[%hx, %hX]\n", (unsigned short)65535, (unsigned short)65535);
     printf("Short hex:[%hx, %hX]\n", (unsigned short)65535, (unsigned short)65535);
 
-    // Test the flags
     _printf("Positive with plus:[%+d]\n", 123);
     printf("Positive with plus:[%+d]\n", 123);
     _printf("Positive with space:[% d]\n", 123);
