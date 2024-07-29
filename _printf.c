@@ -57,7 +57,7 @@ int print_format(const char *format, va_list args)
 	if (*format == '+' || *format == ' ' || *format == '#')
 	{
 		flag = *format;
-	  format++;
+		format++;
 	}
 
 	/* Handling length modifiers */
@@ -72,13 +72,15 @@ int print_format(const char *format, va_list args)
 	switch (flag)
 	{
 		case '+':
-			printed_chars += plus_non_custom_specifier(args);
+			printed_chars += plus_non_custom_specifier(args,
+			length_modifier, specifier);
 			break;
 		case ' ':
-			printed_chars += space_non_custom_specifier(args);
+			printed_chars += space_non_custom_specifier(args,
+			length_modifier, specifier);
 			break;
 		case '#':
-			printed_chars += hash_flag_specifier(args, specifier);
+			printed_chars += hash_flag_specifier(args, specifier, length_modifier);
 			break;
 		default:
 			printed_chars += process_specifier(specifier, args, length_modifier);
@@ -86,6 +88,7 @@ int print_format(const char *format, va_list args)
 	}
 	return (printed_chars);
 }
+
 
 /**
 * process_specifier - Processes a specifier with optional length modifier.
