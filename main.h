@@ -8,12 +8,27 @@
 
 #define BUFFER_SIZE 1024
 
+/* _printf file functions */
 int _printf(const char *format, ...);
+int print_format(const char *format, va_list args);
+
+/* process file functions */
+int process_specifier(char specifier, va_list args, char length_modifier);
+int uoxX_switch_handler(char length_modifier, char specifier, va_list args);
+int di_switch_handler(char length_modifier, va_list args);
+int csm_switch_handler(char specifier, va_list args);
+
+/* switch case handler */
+int di_case_handler(char length_modifier, va_list args);
+int u_case_handler(char length_modifier, va_list args);
+int o_case_handler(char length_modifier, va_list args);
+int x_case_handler(char length_modifier, va_list args);
+int X_case_handler(char length_modifier, va_list args);
+
+/* printing to output stream */
 int _putchar(char c);
 void _flush_buffer(void);
 int _puts(const char *str);
-int print_format(const char *format, va_list args);
-int process_specifier(char specifier, va_list args, char length_modifier);
 
 /* Character and string specifiers */
 int c_specifier(va_list args);
