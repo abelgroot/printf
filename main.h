@@ -13,7 +13,7 @@ int _putchar(char c);
 void _flush_buffer(void);
 int _puts(const char *str);
 int print_format(const char *format, va_list args);
-int process_specifier(char specifier, va_list args);
+int process_specifier(char specifier, va_list args, char length_modifier);
 
 /* Character and string specifiers */
 int c_specifier(va_list args);
@@ -49,8 +49,25 @@ int p_specifier(va_list args);
 int print_big_number(unsigned long n);
 
 /* Flag specifiers */
-int plus_non_custom_specifier(va_list args);
-int space_non_custom_specifier(va_list args);
-int hash_flag_specifier(va_list args, char specifier);
+int plus_non_custom_specifier(va_list args, char length_modifier, char specifier);
+int space_non_custom_specifier(va_list args, char length_modifier, char specifier);
+int hash_flag_specifier(va_list args, char specifier, char length_modifier);
+int plus_print_number(int n);
+int space_print_number(int n);
+
+/* Length modifiers */
+int ld_specifier(va_list args);
+int lu_specifier(va_list args);
+int lo_specifier(va_list args);
+int lx_specifier(va_list args);
+int lX_specifier(va_list args);
+int hd_specifier(va_list args);
+int hu_specifier(va_list args);
+int ho_specifier(va_list args);
+int hx_specifier(va_list args);
+int hX_specifier(va_list args);
+int print_long_number(long n);
+int print_unsigned_long_number(unsigned long n);
+
 
 #endif /* MAIN_H */
