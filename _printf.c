@@ -167,6 +167,10 @@ int process_specifier(char specifier, va_list args, char length_modifier)
 		case 'r':
 			printed_chars += r_specifier(args);
 			break;
+case 'R':
+			printed_chars += R_specifier(args);
+			break;
+		default:
 		case '%':
 			printed_chars += _putchar('%');
 			break;
