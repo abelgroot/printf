@@ -51,6 +51,8 @@ int print_big_number(unsigned long n);
 int plus_non_custom_specifier(va_list args, char length_modifier, char specifier);
 int space_non_custom_specifier(va_list args, char length_modifier, char specifier);
 int hash_flag_specifier(va_list args, char specifier, char length_modifier);
+int plus_print_number(int n);
+int space_print_number(int n);
 
 /* Length modifiers */
 int ld_specifier(va_list args);
