@@ -112,58 +112,58 @@ int process_specifier(char specifier, va_list args, char length_modifier)
 			else
 				printed_chars += d_specifier(args);
 			break;
-			case 'u':
-				if (length_modifier == 'l')
-					printed_chars += lu_specifier(args);
-				else if (length_modifier == 'h')
-					printed_chars += hu_specifier(args);
-				else
-					printed_chars += u_specifier(args);
-				break;
-			case 'o':
-				if (length_modifier == 'l')
-					printed_chars += lo_specifier(args);
-				else if (length_modifier == 'h')
-					printed_chars += ho_specifier(args);
-				else
-					printed_chars += o_specifier(args);
-				break;
-			case 'x':
-				if (length_modifier == 'l')
-					printed_chars += lx_specifier(args);
-				else if (length_modifier == 'h')
-					printed_chars += hx_specifier(args);
-				else
-					printed_chars += x_specifier(args);
-				break;
-			case 'X':
-				if (length_modifier == 'l')
-					printed_chars += lX_specifier(args);
-				else if (length_modifier == 'h')
-					printed_chars += hX_specifier(args);
-				else
-					printed_chars += X_specifier(args);
-				break;
-			case 'b':
-				printed_chars += b_specifier(args);
-				break;
-			case 'p':
-				printed_chars += p_specifier(args);
-				break;
-			case 'S':
-				printed_chars += S_specifier(args);
-				break;
-			case 'r':
-				printed_chars += r_specifier(args);
-				break;
-			case '%':
-				printed_chars += _putchar('%');
-				break;
-			default:
-				_putchar('%');
-				_putchar(specifier);
-				printed_chars += 2;
-				break;
+		case 'u':
+			if (length_modifier == 'l')
+				printed_chars += lu_specifier(args);
+			else if (length_modifier == 'h')
+				printed_chars += hu_specifier(args);
+			else
+				printed_chars += u_specifier(args);
+			break;
+		case 'o':
+			if (length_modifier == 'l')
+				printed_chars += lo_specifier(args);
+			else if (length_modifier == 'h')
+				printed_chars += ho_specifier(args);
+			else
+				printed_chars += o_specifier(args);
+			break;
+		case 'x':
+			if (length_modifier == 'l')
+				printed_chars += lx_specifier(args);
+			else if (length_modifier == 'h')
+				printed_chars += hx_specifier(args);
+			else
+				printed_chars += x_specifier(args);
+			break;
+		case 'X':
+			if (length_modifier == 'l')
+				printed_chars += lX_specifier(args);
+			else if (length_modifier == 'h')
+				printed_chars += hX_specifier(args);
+			else
+				printed_chars += X_specifier(args);
+			break;
+		case 'b':
+			printed_chars += b_specifier(args);
+			break;
+		case 'p':
+			printed_chars += p_specifier(args);
+			break;
+		case 'S':
+			printed_chars += S_specifier(args);
+			break;
+		case 'r':
+			printed_chars += r_specifier(args);
+			break;
+		case '%':
+			printed_chars += _putchar('%');
+			break;
+		default:
+			_putchar('%');
+			_putchar(specifier);
+			printed_chars += 2;
+			break;
 	}
 	return (printed_chars);
 }
