@@ -64,11 +64,16 @@ int p_specifier(va_list args);
 int print_big_number(unsigned long n);
 
 /* Flag specifiers */
-int plus_non_custom_specifier(va_list args, char length_modifier, char specifier);
-int space_non_custom_specifier(va_list args, char length_modifier, char specifier);
+int plus_non_custom_specifier(va_list args,
+		char length_modifier, char specifier);
+int space_non_custom_specifier(va_list args,
+		char length_modifier, char specifier);
 int hash_flag_specifier(va_list args, char specifier, char length_modifier);
 int plus_print_number(int n);
 int space_print_number(int n);
+int o_flag_case_handler(char length_modifier, va_list args);
+int x_flag_case_handler(char length_modifier, va_list args);
+int X_flag_case_handler(char length_modifier, va_list args);
 
 /* Length modifiers */
 int ld_specifier(va_list args);

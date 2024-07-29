@@ -7,7 +7,8 @@
  * @specifier: The format specifier
  * Return: The number of characters printed
  */
-int plus_non_custom_specifier(va_list args, char length_modifier, char specifier)
+int plus_non_custom_specifier(va_list args,
+	char length_modifier, char specifier)
 {
 	int printed_chars = 0;
 
@@ -48,7 +49,8 @@ int plus_print_number(int n)
  * @specifier: The format specifier
  * Return: The number of characters printed
  */
-int space_non_custom_specifier(va_list args, char length_modifier, char specifier)
+int space_non_custom_specifier(va_list args,
+	char length_modifier, char specifier)
 {
 	int printed_chars = 0;
 
@@ -96,39 +98,13 @@ int hash_flag_specifier(va_list args, char specifier, char length_modifier)
 	switch (specifier)
 	{
 		case 'o':
-			_putchar('0');
-			printed_chars++;
-			if (length_modifier == 'l')
-				printed_chars += lo_specifier(args);
-			else if (length_modifier == 'h')
-				printed_chars += ho_specifier(args);
-			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int),
-						8, "01234567");
+			printed_chars += o_flag_case_handler(length_modifier, args);
 			break;
 		case 'x':
-			_putchar('0');
-			_putchar('x');
-			printed_chars += 2;
-			if (length_modifier == 'l')
-				printed_chars += lx_specifier(args);
-			else if (length_modifier == 'h')
-				printed_chars += hx_specifier(args);
-			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int),
-						16, "0123456789abcdef");
+			printed_chars += x_flag_case_handler(length_modifier, args);
 			break;
 		case 'X':
-			_putchar('0');
-			_putchar('X');
-			printed_chars += 2;
-			if (length_modifier == 'l')
-				printed_chars += lX_specifier(args);
-			else if (length_modifier == 'h')
-				printed_chars += hX_specifier(args);
-			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int),
-						16, "0123456789ABCDEF");
+			printed_chars += X_flag_case_handler(length_modifier, args);
 			break;
 		default:
 			printed_chars += process_specifier(specifier, args, length_modifier);
