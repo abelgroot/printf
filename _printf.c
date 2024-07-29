@@ -76,12 +76,10 @@ int print_format(const char *format, va_list args)
 	switch (flag)
 	{
 		case '+':
-			printed_chars += plus_non_custom_specifier(args,
-				length_modifier, specifier);
+			printed_chars += plus_non_custom_specifier(args, length_modifier, specifier);
 			break;
 		case ' ':
-			printed_chars += space_non_custom_specifier(args,
-				length_modifier, specifier);
+			printed_chars += space_non_custom_specifier(args, length_modifier, specifier);
 			break;
 		case '#':
 			printed_chars += hash_flag_specifier(args, specifier, length_modifier);
