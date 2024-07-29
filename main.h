@@ -42,6 +42,7 @@ int convert_and_print(unsigned int num, unsigned int base, const char *digits);
 int S_specifier(va_list args);
 int print_hex_char(unsigned char c);
 int r_specifier(va_list args);
+int R_specifier(va_list args);
 
 /* Pointer specifier */
 int p_specifier(va_list args);
