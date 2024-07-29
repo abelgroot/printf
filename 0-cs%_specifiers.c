@@ -27,6 +27,7 @@ int s_specifier(va_list args)
 	if (str == NULL)
 	{
 		str = "(null)";
+		_putchar('0');
 	}
 	while (*str)
 	{
