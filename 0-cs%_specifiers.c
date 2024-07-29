@@ -21,15 +21,12 @@ int c_specifier(va_list args)
  */
 int s_specifier(va_list args)
 {
-
 	char *str = va_arg(args, char *);
-
 	int printed_chars = 0;
 
 	if (str == NULL)
 	{
 		str = "(null)";
-		_putchar('0');
 	}
 	while (*str)
 	{
