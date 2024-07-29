@@ -23,10 +23,10 @@ int plus_non_custom_specifier(va_list args, char length_modifier, char specifier
 				printed_chars += plus_print_number(va_arg(args, int));
 			break;
 		default:
-		 printed_chars += process_specifier(specifier, args, length_modifier);
-		break;
+			printed_chars += process_specifier(specifier, args, length_modifier);
+			break;
 	}
-return (printed_chars);
+	return (printed_chars);
 }
 
 /**
@@ -71,18 +71,16 @@ int space_non_custom_specifier(va_list args, char length_modifier, char specifie
 }
 
 /**
-* space_print_number - Prints a number with a space if positive
-* @n: The number to print
-* Return: The number of characters printed
-*/
+ * space_print_number - Prints a number with a space if positive
+ * @n: The number to print
+ * Return: The number of characters printed
+ */
 int space_print_number(int n)
 {
 	if (n >= 0)
 		_putchar(' ');
 	return (print_number(n) + (n >= 0 ? 1 : 0));
 }
-
-#include "main.h"
 
 /**
  * hash_flag_specifier - Handles the hash flag
@@ -93,7 +91,7 @@ int space_print_number(int n)
  */
 int hash_flag_specifier(va_list args, char specifier, char length_modifier)
 {
-int printed_chars = 0;
+	int printed_chars = 0;
 
 	switch (specifier)
 	{
@@ -105,7 +103,8 @@ int printed_chars = 0;
 			else if (length_modifier == 'h')
 				printed_chars += ho_specifier(args);
 			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int), 8, "01234567");
+				printed_chars += convert_and_print(va_arg(args, unsigned int),
+						8, "01234567");
 			break;
 		case 'x':
 			_putchar('0');
@@ -116,7 +115,8 @@ int printed_chars = 0;
 			else if (length_modifier == 'h')
 				printed_chars += hx_specifier(args);
 			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int), 16, "0123456789abcdef");
+				printed_chars += convert_and_print(va_arg(args, unsigned int),
+						16, "0123456789abcdef");
 			break;
 		case 'X':
 			_putchar('0');
@@ -127,7 +127,8 @@ int printed_chars = 0;
 			else if (length_modifier == 'h')
 				printed_chars += hX_specifier(args);
 			else
-				printed_chars += convert_and_print(va_arg(args, unsigned int), 16, "0123456789ABCDEF");
+				printed_chars += convert_and_print(va_arg(args, unsigned int),
+						16, "0123456789ABCDEF");
 			break;
 		default:
 			printed_chars += process_specifier(specifier, args, length_modifier);
