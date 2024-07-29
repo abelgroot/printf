@@ -24,6 +24,10 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				break;
 			printed_chars += print_format(format, args);
+			if (format == ' ')
+			{
+				format++;
+			}
 		}
 		else
 		{
