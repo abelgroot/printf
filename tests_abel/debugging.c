@@ -7,11 +7,7 @@ int main(void)
     int neg_num = -42;
 
     /* Test the ' ' (space) flag */
-	_printf("Testing the ' ' (space) flag:\n");
-	printf("Expected: % d\n", num);
-	_printf("Result:   % d\n", num);
-	printf("Expected: % d\n", neg_num);
-	_printf("Result:   % d\n", neg_num);
-	_printf("\n");
+	_printf("% d\n", num);
+	_printf("% d\n", neg_num);
     return (0);
 }
