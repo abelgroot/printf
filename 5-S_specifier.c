@@ -14,21 +14,19 @@ int S_specifier(va_list args)
 	if (!str)
 		str = "(null)";
 
-	while (*str)
+  while (*str)
 	{
-		if (*str < 32 || *str >= 127)
+		if ((unsigned char)*str < 32 || (unsigned char)*str >= 127)
 		{
 			printed_chars += _putchar('\\');
 			printed_chars += _putchar('x');
-			printed_chars += (convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF"));
-			/*printed_chars += print_hex_char((unsigned char)*str);*/
-		}
+			printed_chars += convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF");
+    }
 		else
 		{
 			printed_chars += _putchar(*str);
 		}
 		str++;
-		
 	}
 	return (printed_chars);
 }
