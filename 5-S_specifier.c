@@ -20,7 +20,6 @@ int S_specifier(va_list args)
 		{
 			printed_chars += _putchar('\\');
 			printed_chars += _putchar('x');
-			printed_chars += _putchar('0');
 			printed_chars += convert_and_print(*str, 16, "0123456789ABCDEFG");
 		}
 		else
