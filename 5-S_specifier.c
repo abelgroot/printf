@@ -20,11 +20,8 @@ int S_specifier(va_list args)
 		{
 			printed_chars += _putchar('\\');
 			printed_chars += _putchar('x');
-<<<<<<< HEAD
-=======
 			printed_chars += (convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF"));
 		}
->>>>>>> refs/remotes/origin/main
 			printed_chars += convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF");
     }
 		else
