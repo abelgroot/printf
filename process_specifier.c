@@ -8,10 +8,16 @@
 *
 * Return: The number of characters printed.
 */
-int process_specifier(char specifier, va_list args, char length_modifier)
+int process_specifier(char specifier, va_list args, char length_modifier, int padding_length)
 {
 	int printed_chars = 0;
-
+	
+	if (padding_length != 0)
+		while (padding_length)
+		{
+			printed_chars += _putchar(' ');
+			padding_length--;
+		}
 	if (specifier == 'u' || specifier == 'o'
 	|| specifier == 'x' || specifier == 'X')
 		printed_chars += uoxX_switch_handler(length_modifier, specifier, args);

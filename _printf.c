@@ -56,13 +56,33 @@ int print_format(const char *format, va_list args)
 	char specifier;
 	char flag = '\0';
 	char length_modifier = '\0';
-
+	int padding_length = 0;
+	unsigned int padding_direction = 0;
+	
 	/* Handling flags */
 	if (*format == '+' || *format == ' ' || *format == '#')
 	{
 		flag = *format;
 		format++;
 	}
+
+	/* length padding direction*/
+	if (*format == '-')
+	{
+		padding_direction = 1;
+		format++;
+	}
+	while (*format >= '0' && *format <= '9')
+	{
+		padding_length = (padding_length * (10)) + ((*format - 48) * (1));
+		format++;
+	}
+
+	if(padding_direction)
+	{
+		padding_length = padding_length * (-1);
+	}
+	
 
 	/* Handling length modifiers */
 	if (*format == 'l' || *format == 'h')
@@ -87,7 +107,7 @@ int print_format(const char *format, va_list args)
 			printed_chars += hash_flag_specifier(args, specifier, length_modifier);
 			break;
 		default:
-			printed_chars += process_specifier(specifier, args, length_modifier);
+			printed_chars += process_specifier(specifier, args, length_modifier, padding_length);
 			break;
 	}
 	return (printed_chars);
