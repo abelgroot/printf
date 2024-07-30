@@ -31,6 +31,7 @@ int _printf(const char *format, ...)
 			if (*format == '-')
 			{
 				padding_direction = 1;
+				printed_chars++;
 				format++;
 			}
 			while (*format >= '0' && *format <= '9')
@@ -71,7 +72,7 @@ int _printf(const char *format, ...)
 *
 * Return: The number of characters printed.
 */
-int print_format(const char *format, va_list args, padding_length)
+int print_format(const char *format, va_list args, int padding_length)
 {
 	int printed_chars = 0;
 	char specifier;
