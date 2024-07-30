@@ -6,6 +6,7 @@
 *
 * Return: number of characters printed.
 */
+
 int S_specifier(va_list args)
 {
 	char *str = va_arg(args, char *);
@@ -14,13 +15,13 @@ int S_specifier(va_list args)
 	if (!str)
 		str = "(null)";
 
-  while (*str)
+	while (*str)
 	{
 		if ((unsigned char)*str < 32 || (unsigned char)*str >= 127)
 		{
 			printed_chars += _putchar('\\');
 			printed_chars += _putchar('x');
-			printed_chars += (convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF"));
+			printed_chars += print_hex_char((unsigned char)*str);
 		}
 		else
 		{
@@ -29,4 +30,21 @@ int S_specifier(va_list args)
 		str++;
 	}
 	return (printed_chars);
+}
+
+/**
+ * print_hex_char - a function that prints a character in hexadecimal format.
+ * @c: the character to print.
+ *
+ * Return: number of characters printed.
+ */
+int print_hex_char(unsigned char c)
+{
+    char *hex_digits = "0123456789ABCDEF";
+    int printed_chars = 0;
+
+    printed_chars += _putchar(hex_digits[c / 16]); // Get the high nibble
+    printed_chars += _putchar(hex_digits[c % 16]); // Get the low nibble
+
+    return (printed_chars);
 }
