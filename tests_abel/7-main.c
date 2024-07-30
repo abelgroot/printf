@@ -7,6 +7,7 @@
 */
 int main(void)
 {
+	int len = 0;
 	int num = 42;
 	int neg_num = -42;
 
@@ -43,11 +44,30 @@ int main(void)
 	printf("Expected: %#X\n", num);
 	_printf("Result:   %#X\n", num);
 	_printf("\n");
-	/*T*/
-	_printf("Testing the '#' flag for 'X' specifier:\n");
-	printf("Expected: %r\n", num);
-	_printf("Result:   %#X\n", num);
-	_printf("\n");
+
+  len = _printf("Signed positive with plus flag: %+d\n", 123);
+  printf("Expected: Signed positive with plus flag: +123\n");
+  printf("Length: %d\n\n", len);
+
+  len = _printf("Signed positive with space flag: % d\n", 123);
+  printf("Expected: Signed positive with space flag:  123\n");
+  printf("Length: %d\n\n", len);
+
+  len = _printf("Signed negative with space flag: % d\n", -123);
+  printf("Expected: Signed negative with space flag: -123\n");
+  printf("Length: \n");
+
+  len = _printf("Octal with hash flag: %#o\n", 123);
+  printf("Expected: Octal with hash flag: 0173\n");
+  printf("Length: %d\n\n", len);
+
+  len = _printf("Hexadecimal with hash flag: %#x\n", 123);
+  printf("Expected: Hexadecimal with hash flag: 0x7b\n");
+  printf("Length: %d\n\n", len);
+
+  len = _printf("Hexadecimal with hash flag (uppercase): %#X\n", 123);
+  printf("Expected: Hexadecimal with hash flag (uppercase): 0X7B\n");
+  printf("Length: %d\n\n", len);
 
 	return (0);
 }
