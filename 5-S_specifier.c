@@ -22,8 +22,6 @@ int S_specifier(va_list args)
 			printed_chars += _putchar('x');
 			printed_chars += (convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF"));
 		}
-			printed_chars += convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF");
-    }
 		else
 		{
 			printed_chars += _putchar(*str);
