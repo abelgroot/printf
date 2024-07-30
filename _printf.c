@@ -13,6 +13,7 @@ int _printf(const char *format, ...)
 
 	int padding_length = 0;
 	unsigned int padding_direction = 0;
+	int padding_digit = 0;
 
 	if (!format)
 		return (-1);
@@ -37,6 +38,7 @@ int _printf(const char *format, ...)
 			while (*format >= '0' && *format <= '9')
 			{
 				padding_length = (padding_length * (10)) + ((*format - 48) * (1));
+				padding_digit++;
 				format++;
 			}
 		
@@ -44,6 +46,8 @@ int _printf(const char *format, ...)
 			{
 				padding_length = padding_length * (-1);
 			}
+			if(padding_length)
+				padding_length -= padding_digit;
 
 			printed_chars += print_format(format, args, padding_length);
 			if (*format == ' ' || *format == '#' || *format == '+')
