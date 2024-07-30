@@ -20,7 +20,8 @@ int S_specifier(va_list args)
 		{
 			printed_chars += _putchar('\\');
 			printed_chars += _putchar('x');
-			printed_chars += print_hex_char((unsigned char)*str);
+			printed_chars += (convert_and_print((unsigned int)*str, 16, "0123456789ABCDEF"));
+			/*printed_chars += print_hex_char((unsigned char)*str);*/
 		}
 		else
 		{
