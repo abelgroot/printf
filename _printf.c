@@ -11,6 +11,9 @@ int _printf(const char *format, ...)
 	va_list args;
 	int printed_chars = 0;
 
+	int padding_length = 0;
+	unsigned int padding_direction = 0;
+
 	if (!format)
 		return (-1);
 
@@ -23,7 +26,25 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				break;
-			printed_chars += print_format(format, args);
+
+			/* length padding direction*/
+			if (*format == '-')
+			{
+				padding_direction = 1;
+				format++;
+			}
+			while (*format >= '0' && *format <= '9')
+			{
+				padding_length = (padding_length * (10)) + ((*format - 48) * (1));
+				format++;
+			}
+		
+			if(padding_direction)
+			{
+				padding_length = padding_length * (-1);
+			}
+
+			printed_chars += print_format(format, args, padding_length);
 			if (*format == ' ' || *format == '#' || *format == '+')
 			{
 				format++;
@@ -50,14 +71,12 @@ int _printf(const char *format, ...)
 *
 * Return: The number of characters printed.
 */
-int print_format(const char *format, va_list args)
+int print_format(const char *format, va_list args, padding_length)
 {
 	int printed_chars = 0;
 	char specifier;
 	char flag = '\0';
 	char length_modifier = '\0';
-	int padding_length = 0;
-	unsigned int padding_direction = 0;
 	
 	/* Handling flags */
 	if (*format == '+' || *format == ' ' || *format == '#')
@@ -66,22 +85,6 @@ int print_format(const char *format, va_list args)
 		format++;
 	}
 
-	/* length padding direction*/
-	if (*format == '-')
-	{
-		padding_direction = 1;
-		format++;
-	}
-	while (*format >= '0' && *format <= '9')
-	{
-		padding_length = (padding_length * (10)) + ((*format - 48) * (1));
-		format++;
-	}
-
-	if(padding_direction)
-	{
-		padding_length = padding_length * (-1);
-	}
 	
 
 	/* Handling length modifiers */

@@ -10,7 +10,7 @@
 
 /* _printf file functions */
 int _printf(const char *format, ...);
-int print_format(const char *format, va_list args);
+int print_format(const char *format, va_list args, int padding_length);
 
 /* process file functions */
 int process_specifier(char specifier, va_list args, char length_modifier, int padding_length);
