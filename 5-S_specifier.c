@@ -40,11 +40,11 @@ int S_specifier(va_list args)
  */
 int print_hex_char(unsigned char c)
 {
-    char *hex_digits = "0123456789ABCDEF";
-    int printed_chars = 0;
+	char *hex_digits = "0123456789ABCDEF";
+	int printed_chars = 0;
 
-    printed_chars += _putchar(hex_digits[c / 16]);
-    printed_chars += _putchar(hex_digits[c % 16]);
+	printed_chars += _putchar(hex_digits[c / 16]);
+	printed_chars += _putchar(hex_digits[c % 16]);
 
-    return (printed_chars);
+	return (printed_chars);
 }
