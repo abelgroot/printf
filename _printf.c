@@ -32,7 +32,6 @@ int _printf(const char *format, ...)
 			if (*format == '-')
 			{
 				padding_direction = 1;
-				printed_chars++;
 				format++;
 			}
 			while (*format >= '0' && *format <= '9')
