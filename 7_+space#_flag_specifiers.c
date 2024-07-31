@@ -24,7 +24,7 @@ int plus_non_custom_specifier(va_list args,
 				printed_chars += plus_print_number(va_arg(args, int));
 			break;
 		default:
-			printed_chars += process_specifier(specifier, args, length_modifier, 0);
+			printed_chars += process_specifier(specifier, args, length_modifier, 0, ' ');
 			break;
 	}
 	return (printed_chars);
@@ -66,7 +66,7 @@ int space_non_custom_specifier(va_list args,
 				printed_chars += space_print_number(va_arg(args, int));
 			break;
 		default:
-			printed_chars += process_specifier(specifier, args, length_modifier, 0);
+			printed_chars += process_specifier(specifier, args, length_modifier, 0, ' ');
 			break;
 	}
 	return (printed_chars);
@@ -107,7 +107,7 @@ int hash_flag_specifier(va_list args, char specifier, char length_modifier)
 			printed_chars += X_flag_case_handler(length_modifier, args);
 			break;
 		default:
-			printed_chars += process_specifier(specifier, args, length_modifier, 0);
+			printed_chars += process_specifier(specifier, args, length_modifier, 0, ' ');
 			break;
 	}
 	return (printed_chars);

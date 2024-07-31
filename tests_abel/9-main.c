@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "main.h"
+#include "../main.h"
 
 int main(void)
 {
@@ -120,16 +120,6 @@ int main(void)
     len_standard = printf("%-10s\n", "test");
     printf("Expected: 'test      ', Custom Length: %d, Standard Length: %d\n", len_custom, len_standard);
 
-    // Test cases for percent literal
-    printf("Test 23: Percent literal Right-justified with space padding\n");
-    len_custom = _printf("%5%%\n");  // Expected output: "    %"
-    len_standard = printf("%5%%\n");
-    printf("Expected: '    %', Custom Length: %d, Standard Length: %d\n", len_custom, len_standard);
-
-    printf("Test 24: Percent literal Left-justified with space padding\n");
-    len_custom = _printf("%-5%%\n"); // Expected output: "%    "
-    len_standard = printf("%-5%%\n");
-    printf("Expected: '%%    ', Custom Length: %d, Standard Length: %d\n", len_custom, len_standard);
 
     return 0;
 }

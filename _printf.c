@@ -10,10 +10,10 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int printed_chars = 0;
-
 	int padding_length = 0;
 	unsigned int padding_direction = 0;
 	int padding_digit = 0;
+	char padding_char = ' ';
 
 	if (!format)
 		return (-1);
@@ -28,15 +28,28 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				break;
 
+			padding_length = 0;
+			padding_direction = 0;
+			padding_digit = 0;
+			padding_char = ' ';
+
 			/* length padding direction*/
-			if (*format == '-')
+			while (*format == '-' || *format == '0')
 			{
-				padding_direction = 1;
+				if (*format == '-')
+				{
+					padding_direction = 1;
+					padding_char = ' ';
+				}
+				else if (*format == '0' && padding_direction == 0)
+				{
+					padding_char = '0';
+				}
 				format++;
 			}
 			while (*format >= '0' && *format <= '9')
 			{
-				padding_length = (padding_length * (10)) + ((*format - 48) * (1));
+				padding_length = (padding_length * 10) + (*format - '0');
 				padding_digit++;
 				format++;
 			}
@@ -48,7 +61,7 @@ int _printf(const char *format, ...)
 			if(padding_length)
 				padding_length -= padding_digit;
 
-			printed_chars += print_format(format, args, padding_length);
+			printed_chars += print_format(format, args, padding_length, padding_char);
 			if (*format == ' ' || *format == '#' || *format == '+')
 			{
 				format++;
@@ -75,7 +88,7 @@ int _printf(const char *format, ...)
 *
 * Return: The number of characters printed.
 */
-int print_format(const char *format, va_list args, int padding_length)
+int print_format(const char *format, va_list args, int padding_length, char padding_char)
 {
 	int printed_chars = 0;
 	char specifier;
@@ -114,7 +127,7 @@ int print_format(const char *format, va_list args, int padding_length)
 			printed_chars += hash_flag_specifier(args, specifier, length_modifier);
 			break;
 		default:
-			printed_chars += process_specifier(specifier, args, length_modifier, padding_length);
+			printed_chars += process_specifier(specifier, args, length_modifier, padding_length, padding_char);
 			break;
 	}
 	return (printed_chars);

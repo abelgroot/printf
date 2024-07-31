@@ -10,10 +10,12 @@
 
 /* _printf file functions */
 int _printf(const char *format, ...);
-int print_format(const char *format, va_list args, int padding_length);
+int print_format(const char *format, va_list args, int padding_length,
+	char padding_char);
 
 /* process file functions */
-int process_specifier(char specifier, va_list args, char length_modifier, int padding_length);
+int process_specifier(char specifier, va_list args, char length_modifier,
+	int padding_length, char padding_char);
 int uoxX_switch_handler(char length_modifier, char specifier, va_list args);
 int di_switch_handler(char length_modifier, va_list args);
 int csm_switch_handler(char specifier, va_list args);
